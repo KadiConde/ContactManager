@@ -1,0 +1,123 @@
+﻿@model ContactManager.Models.Contact
+
+@{
+    ViewData["Title"] = "Ajouter un Contact";
+}
+
+<div class="mt-4 animate__animated animate__fadeIn">
+    @* --- EN-TÊTE --- *@
+    <div class="mb-4">
+        <h1 class="fw-bold text-dark display-6">
+            <i class="bi bi-person-plus text-success me-2"></i>Nouveau Contact
+        </h1>
+        <p class="text-muted">Remplissez les informations ci-dessous pour enregistrer un nouveau contact dans votre liste.</p>
+    </div>
+
+    @* --- FORMULAIRE --- *@
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="row g-3">
+                    @* --- Section Identité --- *@
+                    <div class="col-12 border-bottom pb-2 mb-2">
+                        <h5 class="text-primary"><i class="bi bi-person-badge me-2"></i>Informations Personnelles</h5>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Prenom" class="form-label fw-bold small text-uppercase"></label>
+                        <input asp-for="Prenom" class="form-control" placeholder="Ex: Jean" />
+                        <span asp-validation-for="Prenom" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Nom" class="form-label fw-bold small text-uppercase"></label>
+                        <input asp-for="Nom" class="form-control" placeholder="Ex: Dupont" />
+                        <span asp-validation-for="Nom" class="text-danger small"></span>
+                    </div>
+
+                    @* --- Section Contact --- *@
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Courriel" class="form-label fw-bold small text-uppercase"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input asp-for="Courriel" class="form-control" placeholder="nom@exemple.com" />
+                        </div>
+                        <span asp-validation-for="Courriel" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Telephone" class="form-label fw-bold small text-uppercase"></label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                            <input asp-for="Telephone" class="form-control" placeholder="(555) 000-0000" />
+                        </div>
+                        <span asp-validation-for="Telephone" class="text-danger small"></span>
+                    </div>
+
+                    @* --- Section Adresse --- *@
+                    <div class="col-12 border-bottom pb-2 mt-4 mb-2">
+                        <h5 class="text-primary"><i class="bi bi-geo-alt me-2"></i>Localisation</h5>
+                    </div>
+
+                    <div class="col-12 form-group">
+                        <label asp-for="Adresse" class="form-label fw-bold small text-uppercase"></label>
+                        <input asp-for="Adresse" class="form-control" placeholder="123 rue des Lilas" />
+                        <span asp-validation-for="Adresse" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-5 form-group">
+                        <label asp-for="Ville" class="form-label fw-bold small text-uppercase"></label>
+                        <input asp-for="Ville" class="form-control" />
+                        <span asp-validation-for="Ville" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label asp-for="Province" class="form-label fw-bold small text-uppercase"></label>
+                        <input asp-for="Province" class="form-control" />
+                        <span asp-validation-for="Province" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-3 form-group">
+                        <label asp-for="CodePostal" class="form-label fw-bold small text-uppercase"></label>
+                        <input asp-for="CodePostal" class="form-control" placeholder="H1H 1H1" />
+                        <span asp-validation-for="CodePostal" class="text-danger small"></span>
+                    </div>
+
+                    @* --- Section Catégorie --- *@
+                    <div class="col-12 border-bottom pb-2 mt-4 mb-2">
+                        <h5 class="text-primary"><i class="bi bi-tags me-2"></i>Organisation</h5>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="CategorieID" class="form-label fw-bold small text-uppercase">Catégorie</label>
+                        <select asp-for="CategorieID" class="form-select" asp-items="ViewBag.CategorieID">
+                            <option value="">-- Sélectionner une catégorie --</option>
+                        </select>
+                        <span asp-validation-for="CategorieID" class="text-danger small"></span>
+                    </div>
+
+                    @* Note: On cache souvent la date de création car elle est gérée par le contrôleur *@
+                    <input type="hidden" asp-for="DateCreation" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+                    @* --- BOUTONS --- *@
+                    <div class="col-12 mt-4 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-check-lg me-1"></i> Créer le contact
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                            Annuler
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

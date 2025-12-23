@@ -1,0 +1,132 @@
+﻿@model ContactManager.Models.Contact
+
+@{
+    ViewData["Title"] = "Modifier le Contact";
+}
+
+<div class="mt-4 animate__animated animate__fadeIn">
+    @* --- EN-TÊTE --- *@
+    <div class="mb-4 d-flex align-items-center justify-content-between">
+        <div>
+            <h1 class="fw-bold text-dark display-6">
+                <i class="bi bi-pencil-square text-primary me-2"></i>Modifier le Contact
+            </h1>
+            <p class="text-muted mb-0">Mettez à jour les informations de <strong>@Model.Prenom @Model.Nom</strong>.</p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i> Retour à la liste
+        </a>
+    </div>
+
+    @* --- FORMULAIRE DANS UNE CARTE --- *@
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                @* Champ caché pour l'ID *@
+                <input type="hidden" asp-for="ContactID" />
+                @* On garde la date de création originale *@
+                <input type="hidden" asp-for="DateCreation" />
+
+                <div class="row g-3">
+                    @* --- Section Identité --- *@
+                    <div class="col-12 border-bottom pb-2 mb-2">
+                        <h5 class="text-primary fw-bold small text-uppercase">
+                            <i class="bi bi-person-badge me-2"></i>Informations Personnelles
+                        </h5>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Prenom" class="form-label fw-bold small"></label>
+                        <input asp-for="Prenom" class="form-control" />
+                        <span asp-validation-for="Prenom" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Nom" class="form-label fw-bold small"></label>
+                        <input asp-for="Nom" class="form-control" />
+                        <span asp-validation-for="Nom" class="text-danger small"></span>
+                    </div>
+
+                    @* --- Section Contact --- *@
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Courriel" class="form-label fw-bold small"></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-envelope text-muted"></i></span>
+                            <input asp-for="Courriel" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Courriel" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="Telephone" class="form-label fw-bold small"></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light"><i class="bi bi-telephone text-muted"></i></span>
+                            <input asp-for="Telephone" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Telephone" class="text-danger small"></span>
+                    </div>
+
+                    @* --- Section Adresse --- *@
+                    <div class="col-12 border-bottom pb-2 mt-4 mb-2">
+                        <h5 class="text-primary fw-bold small text-uppercase">
+                            <i class="bi bi-geo-alt me-2"></i>Localisation
+                        </h5>
+                    </div>
+
+                    <div class="col-12 form-group">
+                        <label asp-for="Adresse" class="form-label fw-bold small"></label>
+                        <input asp-for="Adresse" class="form-control" />
+                        <span asp-validation-for="Adresse" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-5 form-group">
+                        <label asp-for="Ville" class="form-label fw-bold small"></label>
+                        <input asp-for="Ville" class="form-control" />
+                        <span asp-validation-for="Ville" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label asp-for="Province" class="form-label fw-bold small"></label>
+                        <input asp-for="Province" class="form-control" />
+                        <span asp-validation-for="Province" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-3 form-group">
+                        <label asp-for="CodePostal" class="form-label fw-bold small"></label>
+                        <input asp-for="CodePostal" class="form-control" />
+                        <span asp-validation-for="CodePostal" class="text-danger small"></span>
+                    </div>
+
+                    @* --- Section Catégorie --- *@
+                    <div class="col-12 border-bottom pb-2 mt-4 mb-2">
+                        <h5 class="text-primary fw-bold small text-uppercase">
+                            <i class="bi bi-tags me-2"></i>Organisation
+                        </h5>
+                    </div>
+
+                    <div class="col-md-6 form-group">
+                        <label asp-for="CategorieID" class="form-label fw-bold small">Catégorie</label>
+                        <select asp-for="CategorieID" class="form-select border-primary-subtle" asp-items="ViewBag.CategorieID"></select>
+                        <span asp-validation-for="CategorieID" class="text-danger small"></span>
+                    </div>
+
+                    @* --- BOUTONS --- *@
+                    <div class="col-12 mt-4 pt-3 border-top">
+                        <button type="submit" class="btn btn-primary px-5 shadow-sm">
+                            <i class="bi bi-save me-2"></i>Enregistrer les modifications
+                        </button>
+                        <a asp-action="Index" class="btn btn-link text-secondary">Annuler</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,172 @@
+﻿@using ContactManager.Models
+@model ContactManager.Models.PaginatedList<ContactManager.Models.Contact>
+
+@{
+    ViewData["Title"] = "Mes Contacts";
+}
+
+<div class="mt-4 animate__animated animate__fadeIn">
+
+    @* --- SECTION EN-TÊTE & RECHERCHE --- *@
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4 gap-3">
+        <div>
+            <h1 class="fw-bold text-dark display-6">
+                <i class="bi bi-person-lines-fill text-primary me-2"></i>@ViewData["Title"]
+            </h1>
+            <p class="text-muted mb-0">
+                Gérez, triez et recherchez vos contacts personnels et professionnels.
+            </p>
+        </div>
+
+        @* Formulaire de Recherche *@
+        <form asp-action="Index" method="get" class="d-flex gap-2">
+            <div class="input-group">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search text-muted"></i>
+                </span>
+                <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]"
+                       class="form-control border-start-0" placeholder="Rechercher par nom..." />
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+            </div>
+            @if (ViewData["CurrentFilter"] != null)
+            {
+                <a asp-action="Index" class="btn btn-outline-secondary" title="Réinitialiser">
+                    <i class="bi bi-x-lg"></i>
+                </a>
+            }
+        </form>
+
+        <a asp-action="Create" class="btn btn-success shadow-sm">
+            <i class="bi bi-person-plus-fill me-1"></i> Nouveau Contact
+        </a>
+    </div>
+
+    @* --- LISTE DES CONTACTS --- *@
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-light border shadow-sm text-center py-5 rounded-3">
+            <i class="bi bi-emoji-frown display-4 text-muted mb-3"></i>
+            <h4 class="fw-bold">Aucun contact trouvé</h4>
+            <p class="text-muted">Essayez de modifier votre recherche ou ajoutez un nouveau contact.</p>
+            <a asp-action="Create" class="btn btn-primary mt-2">Créer mon premier contact</a>
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-uppercase small fw-bold">
+                        <tr>
+                            <th class="ps-4 py-3">
+                                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="text-decoration-none text-dark">
+                                    Identité <i class="bi bi-arrow-down-up ms-1 text-muted"></i>
+                                </a>
+                            </th>
+                            <th>Info Contact</th>
+                            <th>Localisation</th>
+                            <th>Catégorie</th>
+                            <th class="text-end pe-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                            @* Correction Substring : On vérifie si le prénom existe pour l'avatar *@
+                                            <span class="fw-bold fs-5">
+                                                @(string.IsNullOrEmpty(item.Prenom) ? "?" : item.Prenom.Substring(0, 1).ToUpper())
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-dark">@item.Prenom @item.Nom</div>
+                                            <small class="text-muted">Ajouté le : @item.DateCreation.ToShortDateString()</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <a href="mailto:@item.Courriel" class="text-decoration-none text-secondary mb-1">
+                                            <i class="bi bi-envelope me-2"></i>@item.Courriel
+                                        </a>
+                                        <span class="text-muted small">
+                                            <i class="bi bi-telephone me-2"></i>@item.Telephone
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <span class="text-dark">
+                                        <i class="bi bi-geo-alt me-1 text-danger"></i> @item.Ville, @item.Province
+                                    </span>
+                                </td>
+
+                                <td>
+                                    @* Correction : Vérification de la catégorie pour éviter les erreurs NullReference *@
+                                    <span class="badge bg-info text-dark bg-opacity-25 border border-info">
+                                        <i class="bi bi-tag-fill me-1"></i>
+                                        @(item.Categorie != null ? item.Categorie.Nom : "Sans catégorie")
+                                    </span>
+                                </td>
+
+                                <td class="text-end pe-4">
+                                    <div class="btn-group btn-group-sm shadow-sm" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.ContactID" class="btn btn-outline-primary" title="Modifier">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.ContactID" class="btn btn-outline-info" title="Détails">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.ContactID" class="btn btn-outline-danger" title="Supprimer">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            @* --- PIED DE PAGE & PAGINATION --- *@
+            <div class="card-footer bg-white py-3 border-top">
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                }
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="text-muted small">
+                        Page <strong>@Model.PageIndex</strong> sur <strong>@Model.TotalPages</strong>
+                    </span>
+                    <nav aria-label="Navigation des pages">
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item @prevDisabled">
+                                <a asp-action="Index"
+                                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                   asp-route-pageNumber="@(Model.PageIndex - 1)"
+                                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                   class="page-link">
+                                    <i class="bi bi-chevron-left"></i> Précédent
+                                </a>
+                            </li>
+                            <li class="page-item @nextDisabled">
+                                <a asp-action="Index"
+                                   asp-route-sortOrder="@ViewData["CurrentSort"]"
+                                   asp-route-pageNumber="@(Model.PageIndex + 1)"
+                                   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                   class="page-link ms-2">
+                                    Suivant <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    }
+</div>

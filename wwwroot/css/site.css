@@ -1,0 +1,537 @@
+/* site.css - Styles personnalisés pour ContactManager Pro */
+
+/* ===== VARIABLES CSS ===== */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3a0ca3;
+    --accent-color: #7209b7;
+    --success-color: #4cc9f0;
+    --warning-color: #f72585;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gradient-primary: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+    --gradient-warning: linear-gradient(135deg, #f72585 0%, #b5179e 100%);
+    --gradient-success: linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%);
+    --gradient-dark: linear-gradient(135deg, #212529 0%, #343a40 100%);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+    --shadow-xl: 0 12px 24px rgba(0,0,0,0.2);
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 30px;
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    overflow-x: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+}
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* ===== NAVIGATION ===== */
+#mainNav {
+    background: var(--gradient-dark);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+}
+
+    #mainNav.scrolled {
+        padding: 0.5rem 0;
+        background: rgba(33, 37, 41, 0.95);
+        box-shadow: var(--shadow-lg);
+    }
+
+.navbar-brand .brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+    margin: 0 2px;
+}
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+        background: var(--primary-color);
+        color: white !important;
+    }
+
+/* ===== BUTTONS ===== */
+.btn {
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+    }
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
+    }
+
+.btn-outline-primary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+    .btn-outline-primary:hover {
+        background: var(--gradient-primary);
+        border-color: transparent;
+    }
+
+.btn-floating {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+    .btn-floating.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* ===== CARDS ===== */
+.card {
+    border: none;
+    border-radius: var(--border-radius-md);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-xl);
+    }
+
+.feature-card {
+    border-top: 4px solid transparent;
+}
+
+    .feature-card:hover {
+        border-top-color: var(--primary-color);
+    }
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-primary-gradient {
+    background: var(--gradient-primary);
+}
+
+.bg-warning-gradient {
+    background: var(--gradient-warning);
+}
+
+.bg-success-gradient {
+    background: var(--gradient-success);
+}
+
+.bg-purple-gradient {
+    background: linear-gradient(135deg, #7209b7 0%, #560bad 100%);
+}
+
+/* ===== BADGES ===== */
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+    .badge.rounded-pill {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+/* ===== FORMS ===== */
+.form-control, .form-select {
+    border-radius: var(--border-radius-sm);
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+
+.form-floating label {
+    color: #6c757d;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--primary-color);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeInUp {
+    animation-name: fadeInUp;
+}
+
+.animate__pulse {
+    animation-name: pulse;
+}
+
+.animate__bounce {
+    animation-name: bounce;
+}
+
+/* ===== HOVER EFFECTS ===== */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-xl);
+    }
+
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+    .hover-grow:hover {
+        transform: scale(1.05);
+    }
+
+.hover-shadow {
+    transition: box-shadow 0.3s ease;
+}
+
+    .hover-shadow:hover {
+        box-shadow: var(--shadow-lg);
+    }
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 5rem 0;
+}
+
+    section:nth-child(even) {
+        background-color: var(--light-color);
+    }
+
+.cta-section {
+    position: relative;
+    overflow: hidden;
+}
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,165.3C960,149,1056,139,1152,154.7C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+        background-size: cover;
+    }
+
+/* ===== FOOTER ===== */
+footer {
+    background: var(--gradient-dark);
+}
+
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .display-5 {
+        font-size: 2rem;
+    }
+
+    .hero-section {
+        padding-top: 100px;
+        text-align: center;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand .brand-text {
+        font-size: 1.25rem;
+    }
+
+    .display-3 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.border-gradient {
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box, var(--gradient-primary) border-box;
+}
+
+.shadow-hover {
+    transition: box-shadow 0.3s ease;
+}
+
+    .shadow-hover:hover {
+        box-shadow: var(--shadow-lg);
+    }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary-color);
+    }
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+}
+/* --- Gradients Personnalisés --- */
+.bg-primary-gradient {
+    background: linear-gradient(135deg, #0d6efd 0%, #00d4ff 100%);
+}
+
+.bg-success-gradient {
+    background: linear-gradient(135deg, #198754 0%, #a2ffb6 100%);
+}
+
+.bg-warning-gradient {
+    background: linear-gradient(135deg, #ffc107 0%, #ffecb5 100%);
+}
+
+/* --- Hero Section & Images --- */
+.hero-section {
+    background-color: #212529; /* Fond sombre pour faire ressortir le texte */
+    color: white;
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 2;
+    color: #212529;
+    width: 160px;
+    text-align: center;
+}
+
+.card-1 {
+    top: 10%;
+    left: -10%;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.card-2 {
+    bottom: 20%;
+    right: -5%;
+    animation: floating 3s ease-in-out infinite 1s;
+}
+
+.card-3 {
+    bottom: 10%;
+    left: 5%;
+    animation: floating 3s ease-in-out infinite 2s;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* --- Effets de survol --- */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+    .hover-lift:hover {
+        transform: translateY(-10px);
+    }

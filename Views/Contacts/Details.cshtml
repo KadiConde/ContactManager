@@ -1,0 +1,84 @@
+﻿@model ContactManager.Models.Contact
+
+@{
+    ViewData["Title"] = "Détails du Contact";
+}
+
+<div class="mt-4 animate__animated animate__fadeIn">
+    @* --- EN-TÊTE AVEC AVATAR --- *@
+    <div class="d-flex align-items-center mb-4">
+        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 80px; height: 80px;">
+            <span class="fw-bold display-6">@(string.IsNullOrEmpty(Model.Prenom) ? "?" : Model.Prenom.Substring(0, 1).ToUpper())</span>
+        </div>
+        <div class="ms-4">
+            <h1 class="fw-bold text-dark mb-1">@Model.Prenom @Model.Nom</h1>
+            <span class="badge bg-info text-dark bg-opacity-25 border border-info px-3 py-2">
+                <i class="bi bi-tag-fill me-1"></i> @Model.Categorie.Nom
+            </span>
+        </div>
+    </div>
+
+    <div class="row">
+        @* --- COLONNE GAUCHE : Coordonnées --- *@
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-person-lines-fill text-primary me-2"></i>Coordonnées</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="text-muted small text-uppercase fw-bold d-block">Courriel</label>
+                        <a href="mailto:@Model.Courriel" class="text-decoration-none fs-5">@Model.Courriel</a>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted small text-uppercase fw-bold d-block">Téléphone</label>
+                        <span class="fs-5 text-dark">@Model.Telephone</span>
+                    </div>
+                    <div class="mb-0">
+                        <label class="text-muted small text-uppercase fw-bold d-block">Date d'ajout</label>
+                        <span class="text-dark">@Model.DateCreation.ToLongDateString()</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* --- COLONNE DROITE : Localisation --- *@
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-geo-alt-fill text-danger me-2"></i>Localisation</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="text-muted small text-uppercase fw-bold d-block">Adresse</label>
+                        <span class="fs-5 text-dark">@Model.Adresse</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label class="text-muted small text-uppercase fw-bold d-block">Ville</label>
+                            <span class="text-dark">@Model.Ville</span>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="text-muted small text-uppercase fw-bold d-block">Province</label>
+                            <span class="text-dark">@Model.Province</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-muted small text-uppercase fw-bold d-block">Code Postal</label>
+                        <span class="text-dark">@Model.CodePostal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* --- ACTIONS --- *@
+    <div class="d-flex gap-2 mt-2">
+        <a asp-action="Edit" asp-route-id="@Model?.ContactID" class="btn btn-primary px-4 shadow-sm">
+            <i class="bi bi-pencil-square me-2"></i>Modifier
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary px-4">
+            <i class="bi bi-arrow-left me-2"></i>Retour à la liste
+        </a>
+    </div>
+</div>

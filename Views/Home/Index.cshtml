@@ -1,0 +1,374 @@
+﻿@{
+    ViewData["Title"] = "ContactManager Pro - Gestion de Contacts Intelligente";
+}
+
+<!-- Hero Section -->
+<section id="home" class="hero-section d-flex align-items-center min-vh-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Hero Content -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="hero-content animate__animated animate__fadeInUp">
+                    <span class="badge bg-primary-gradient rounded-pill px-3 py-2 mb-3 d-inline-block">
+                        <i class="bi bi-star-fill me-1"></i> Solution Professionnelle
+                    </span>
+
+                    <h1 class="display-3 fw-bold mb-4">
+                        Gérez Vos Contacts
+                        <span class="text-primary">Intelligemment</span>
+                    </h1>
+
+                    <p class="lead mb-4">
+                        ContactManager Pro est la solution ultime pour organiser, gérer et optimiser
+                        vos contacts professionnels et personnels. Simple, sécurisé et accessible
+                        depuis n'importe quel appareil.
+                    </p>
+
+                    <!-- Call to Action -->
+                    <div class="d-flex flex-wrap gap-3 mt-5">
+                        <a asp-area="Identity" asp-page="/Account/Register"
+                           class="btn btn-primary btn-lg px-4 py-3 shadow-lg-hover animate__animated animate__pulse animate__infinite">
+                            <i class="bi bi-rocket-takeoff me-2"></i>Commencer Gratuitement
+                        </a>
+
+                        <a href="#features" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="bi bi-play-circle me-2"></i>Voir la Démo
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="row mt-5 pt-4">
+                        <div class="col-4">
+                            <div class="text-center">
+                                <h3 class="fw-bold text-warning display-6">100%</h3>
+                                <p class="text-light mb-0">Sécurisé</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <h3 class="fw-bold text-warning display-6">24/7</h3>
+                                <p class="text-light mb-0">Disponible</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <h3 class="fw-bold text-warning display-6">∞</h3>
+                                <p class="text-light mb-0">Contacts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="col-lg-6">
+                <div class="hero-image position-relative">
+                    <div class="floating-card card-1">
+                        <i class="bi bi-person-badge text-primary fs-1"></i>
+                        <h5 class="mt-2">Profils Complets</h5>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="bi bi-search text-success fs-1"></i>
+                        <h5 class="mt-2">Recherche Avancée</h5>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="bi bi-shield-check text-danger fs-1"></i>
+                        <h5 class="mt-2">100% Sécurisé</h5>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                         alt="Dashboard Preview" class="img-fluid rounded-4 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <a href="#features" class="scroll-link">
+            <i class="bi bi-chevron-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-success-gradient rounded-pill px-3 py-2 mb-2">
+                <i class="bi bi-lightning-charge me-1"></i> Fonctionnalités
+            </span>
+            <h2 class="display-5 fw-bold mb-3">Tout ce dont vous avez besoin</h2>
+            <p class="lead text-muted">Découvrez les fonctionnalités puissantes de ContactManager Pro</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Feature 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4">
+                        <div class="feature-icon bg-primary-gradient rounded-circle mb-4">
+                            <i class="bi bi-shield-lock fs-2"></i>
+                        </div>
+                        <h4 class="card-title fw-bold">Sécurité Maximale</h4>
+                        <p class="card-text text-muted">
+                            Authentification à deux facteurs, chiffrement des données et conformité RGPD.
+                            Vos contacts sont en sécurité avec nous.
+                        </p>
+                        <ul class="list-unstyled text-muted">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Chiffrement AES-256</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Authentification 2FA</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Backups quotidiens</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4">
+                        <div class="feature-icon bg-warning-gradient rounded-circle mb-4">
+                            <i class="bi bi-search-heart fs-2"></i>
+                        </div>
+                        <h4 class="card-title fw-bold">Recherche Intelligente</h4>
+                        <p class="card-text text-muted">
+                            Trouvez instantanément n'importe quel contact avec notre moteur de recherche avancé.
+                            Filtrez par nom, ville, catégorie et plus.
+                        </p>
+                        <ul class="list-unstyled text-muted">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Recherche en temps réel</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Filtres avancés</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Suggestions intelligentes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4">
+                        <div class="feature-icon bg-info-gradient rounded-circle mb-4">
+                            <i class="bi bi-phone-vibrate fs-2"></i>
+                        </div>
+                        <h4 class="card-title fw-bold">Responsive Design</h4>
+                        <p class="card-text text-muted">
+                            Accédez à vos contacts depuis n'importe quel appareil. Interface optimisée pour mobile,
+                            tablette et desktop.
+                        </p>
+                        <ul class="list-unstyled text-muted">
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Design mobile-first</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Chargement rapide</li>
+                            <li><i class="bi bi-check-circle-fill text-success me-2"></i>Interface tactile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="about-image position-relative">
+                    <div class="rounded-4 overflow-hidden shadow-lg">
+                        <img src="~/images/imagelogo.jpg"
+                             alt="About ContactManager" class="img-fluid">
+                    </div>
+                    <div class="experience-badge bg-primary text-white rounded-pill px-4 py-2 position-absolute">
+                        <i class="bi bi-award me-2"></i>Projet Académique INFO4042
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="ps-lg-5">
+                    <span class="badge bg-info-gradient rounded-pill px-3 py-2 mb-3">
+                        <i class="bi bi-info-circle me-1"></i> À Propos
+                    </span>
+
+                    <h2 class="display-6 fw-bold mb-4">
+                        Pourquoi Choisir
+                        <span class="text-primary">ContactManager Pro</span>?
+                    </h2>
+
+                    <p class="lead text-muted mb-4">
+                        Développé dans le cadre du cours INFO4042 - Applications Web,
+                        ContactManager Pro démontre l'application des meilleures pratiques
+                        de développement web moderne.
+                    </p>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-sm bg-primary text-white rounded-circle me-3">
+                                    <i class="bi bi-check-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">ASP.NET Core MVC</h6>
+                                    <small class="text-muted">Architecture moderne</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-sm bg-success text-white rounded-circle me-3">
+                                    <i class="bi bi-check-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Entity Framework</h6>
+                                    <small class="text-muted">Code First approach</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-sm bg-warning text-white rounded-circle me-3">
+                                    <i class="bi bi-check-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">Bootstrap 5</h6>
+                                    <small class="text-muted">Design responsive</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <div class="icon-sm bg-danger text-white rounded-circle me-3">
+                                    <i class="bi bi-check-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold">SQL Server</h6>
+                                    <small class="text-muted">Base de données robuste</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-chat-left-text me-2"></i>Nous Contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 bg-primary-gradient text-white">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-4">
+                    Prêt à révolutionner votre gestion de contacts ?
+                </h2>
+                <p class="lead mb-5">
+                    Rejoignez des milliers d'utilisateurs satisfaits et gérez vos contacts
+                    de manière professionnelle dès aujourd'hui !
+                </p>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                    <a asp-area="Identity" asp-page="/Account/Register"
+                       class="btn btn-light btn-lg px-5 py-3 fw-bold">
+                        <i class="bi bi-person-plus me-2"></i>S'inscrire Gratuitement
+                    </a>
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login"
+                           class="btn btn-outline-light btn-lg px-5 py-3">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Se Connecter
+                        </a>
+                    }
+                </div>
+
+                <p class="mt-4 mb-0">
+                    <small>
+                        <i class="bi bi-shield-check me-1"></i>
+                        Aucune carte de crédit requise • Essai gratuit de 30 jours
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-purple-gradient rounded-pill px-3 py-2 mb-2">
+                <i class="bi bi-headset me-1"></i> Support
+            </span>
+            <h2 class="display-5 fw-bold mb-3">Contactez-Nous</h2>
+            <p class="lead text-muted">Une question ? Notre équipe est là pour vous aider</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-4 p-md-5">
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Votre nom">
+                                        <label for="name">
+                                            <i class="bi bi-person me-2"></i>Votre nom complet
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Votre email">
+                                        <label for="email">
+                                            <i class="bi bi-envelope me-2"></i>Adresse email
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" placeholder="Sujet">
+                                        <label for="subject">
+                                            <i class="bi bi-chat-square-text me-2"></i>Sujet du message
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="message" placeholder="Votre message"
+                                                  style="height: 150px"></textarea>
+                                        <label for="message">
+                                            <i class="bi bi-pencil-square me-2"></i>Votre message
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter">
+                                        <label class="form-check-label text-muted" for="newsletter">
+                                            Je souhaite recevoir les nouveautés et offres spéciales
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                                        <i class="bi bi-send me-2"></i>Envoyer le message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,61 @@
+﻿@model ContactManager.Models.Categorie
+
+@{
+    ViewData["Title"] = "Créer une Catégorie";
+}
+
+<div class="mt-4 animate__animated animate__fadeIn">
+    @* --- EN-TÊTE --- *@
+    <div class="mb-4">
+        <h1 class="fw-bold text-dark display-6">
+            <i class="bi bi-tags text-success me-2"></i>Nouvelle Catégorie
+        </h1>
+        <p class="text-muted">Ajoutez une nouvelle classification pour organiser vos contacts (ex: Famille, Travail, Amis).</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-5">
+            @* --- CARTE DE FORMULAIRE --- *@
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small" role="alert"></div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Nom" class="form-label fw-bold small text-uppercase text-primary">Nom de la catégorie</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-tag text-muted"></i></span>
+                                <input asp-for="Nom" class="form-control form-control-lg" placeholder="Ex: Professionnel" autofocus />
+                            </div>
+                            <span asp-validation-for="Nom" class="text-danger small"></span>
+                        </div>
+
+                        @* --- BOUTONS --- *@
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="submit" class="btn btn-success px-4 shadow-sm">
+                                <i class="bi bi-plus-circle me-2"></i>Enregistrer
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                Annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @* --- PETIT CONSEIL --- *@
+            <div class="mt-4 p-3 bg-light rounded-3 border">
+                <p class="small text-muted mb-0">
+                    <i class="bi bi-info-circle me-2 text-info"></i>
+                    <strong>Astuce :</strong> Utilisez des noms courts et explicites pour faciliter le filtrage de vos contacts plus tard.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

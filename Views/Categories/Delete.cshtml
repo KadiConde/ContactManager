@@ -1,0 +1,57 @@
+﻿@model ContactManager.Models.Categorie
+
+@{
+    ViewData["Title"] = "Supprimer la catégorie";
+}
+
+<div class="mt-4 animate__animated animate__fadeIn">
+    @* --- EN-TÊTE D'AVERTISSEMENT --- *@
+    <div class="alert alert-warning border-0 shadow-sm rounded-3 d-flex align-items-center p-4 mb-4">
+        <i class="bi bi-exclamation-octagon-fill display-5 me-4 text-danger"></i>
+        <div>
+            <h2 class="fw-bold mb-1 text-dark">Attention</h2>
+            <p class="mb-0 text-dark">Vous êtes sur le point de supprimer la catégorie <strong>"@Model.Nom"</strong>. Assurez-vous qu'aucun contact n'est essentiel à cette classification.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            @* --- FICHE RÉCAPITULATIVE --- *@
+            <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+                <div class="card-header bg-white py-3 border-bottom">
+                    <h5 class="card-title mb-0 fw-bold text-dark text-center">
+                        <i class="bi bi-tag-fill me-2 text-primary"></i>Détails de la catégorie
+                    </h5>
+                </div>
+                <div class="card-body py-5 text-center">
+                    <label class="text-muted small text-uppercase fw-bold d-block mb-2">Nom de la catégorie</label>
+                    <span class="display-6 fw-bold text-dark">@Model.Nom</span>
+                </div>
+
+                @* --- BOUTONS D'ACTION --- *@
+                <div class="card-footer bg-light p-4">
+                    <form asp-action="Delete" class="text-center">
+                        <input type="hidden" asp-for="CategorieID" />
+
+                        <div class="d-grid gap-2 col-10 mx-auto">
+                            <button type="submit" class="btn btn-danger btn-lg shadow-sm">
+                                <i class="bi bi-trash me-2"></i>Confirmer la suppression
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @* --- NOTE SUR LES RELATIONS --- *@
+            <div class="text-center mt-3">
+                <small class="text-muted italic">
+                    <i class="bi bi-info-circle me-1"></i>
+                    Note : Si des contacts sont liés à cette catégorie, la suppression pourrait échouer selon vos règles de base de données.
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
