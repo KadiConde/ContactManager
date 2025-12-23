@@ -6,7 +6,7 @@ Elle permet aux utilisateurs de créer, organiser, rechercher et gérer leurs co
 
 L’application met en pratique les bonnes pratiques du développement web avec ASP.NET Core MVC, une interface responsive et une authentification sécurisée.
 
-🎯 Objectifs du projet
+🎯 Objectifs du projet .
 
 Concevoir une application web complète et fonctionnelle
 
